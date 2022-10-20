@@ -1,0 +1,12 @@
+Index: xlsxwriter/setup.py
+===================================================================
+--- xlsxwriter.orig/setup.py
++++ xlsxwriter/setup.py
+@@ -33,7 +33,6 @@ setup(
+     author_email='jmcnamara@cpan.org',
+     url='https://github.com/jmcnamara/XlsxWriter',
+     packages=['xlsxwriter'],
+-    scripts=['examples/vba_extract.py'],
+     cmdclass={'test': PyTest},
+     license='BSD-2-Clause',
+     description='A Python module for creating Excel XLSX files.',

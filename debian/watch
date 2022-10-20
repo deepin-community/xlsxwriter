@@ -1,0 +1,3 @@
+version=4
+opts=filenamemangle=s/.+\/RELEASE_(\d\S+)\.tar\.gz/XlsxWriter-$1\.tar\.gz/ \
+https://github.com/jmcnamara/XlsxWriter/tags .*/RELEASE_(\d\S+)\.tar\.gz

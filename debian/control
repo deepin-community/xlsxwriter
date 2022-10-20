@@ -1,0 +1,34 @@
+Source: xlsxwriter
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Section: python
+Priority: optional
+Standards-Version: 4.6.0
+Build-Depends: debhelper-compat (= 13), dh-python, python3, python3-pytest
+Vcs-Git: https://salsa.debian.org/python-team/packages/xlsxwriter.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/xlsxwriter
+Homepage: https://xlsxwriter.readthedocs.org/
+Rules-Requires-Root: no
+
+Package: python3-xlsxwriter
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: Python 3 module for creating Excel XLSX files
+ XlsxWriter is a Python module for writing files in the Excel 2007+ XLSX
+ file format.
+ .
+ XlsxWriter can be used to write text, numbers, formulas and hyperlinks to
+ multiple worksheets and it supports features such as formatting and many more,
+ including:
+ .
+  * 100% compatible Excel XLSX files
+  * Full formatting
+  * Merged cells
+  * Defined names
+  * Charts
+  * Autofilters
+  * Data validation and drop down lists
+  * Conditional formatting
+  * Worksheet PNG/JPEG images
+  * Rich multi-format strings
+ .
+ This is the Python 3 version of the package.

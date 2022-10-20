@@ -1,0 +1,2 @@
+Tests: python3-xlsxwriter
+Depends: python3-all, python3-pytest, python3-xlsxwriter

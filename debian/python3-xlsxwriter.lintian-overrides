@@ -1,0 +1,2 @@
+# This file appears to be non-UTF-8 deliberately
+python3-xlsxwriter: national-encoding usr/share/doc/python3-xlsxwriter/examples/unicode_shift_jis.txt

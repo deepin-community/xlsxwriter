@@ -1,0 +1,122 @@
+xlsxwriter (3.0.2-2) unstable; urgency=medium
+
+  * Team upload.
+  * Fix autopkgtests
+
+ -- Scott Talbert <swt@techie.net>  Tue, 09 Nov 2021 19:42:40 -0500
+
+xlsxwriter (3.0.2-1) unstable; urgency=medium
+
+  * Team upload.
+  * Switch to using GitHub sources instead of PyPI (to get test files)
+  * Update to new upstream release 3.0.2
+  * Enable build-time unit tests
+  * Refresh patch
+  * Avoid installing XlsxWriter.pdf (massive document)
+  * Enable autopkgtests
+
+ -- Scott Talbert <swt@techie.net>  Mon, 08 Nov 2021 23:01:31 -0500
+
+xlsxwriter (3.0.1-1) unstable; urgency=medium
+
+  * Team Upload.
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/copyright: Use https protocol in Format field
+  * d/watch: Use https protocol
+  * d/changelog: Remove trailing whitespaces
+  * d/control: Remove ancient X-Python-Version field
+  * d/control: Remove ancient X-Python3-Version field
+  * Convert git repository from git-dpm to gbp layout
+  * Use debhelper-compat instead of debian/compat.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Sandro Tosi ]
+  * Use the new Debian Python Team contact name and address
+
+  [ Scott Talbert ]
+  * Remove Checkbox developers from Maintainer/Uploaders
+  * Update Homepage location (Closes: #966164)
+  * Update Standards-Version to 4.6.0 (no changes needed)
+  * Update to new upstream version 3.0.1 (Closes: #968935, #976862)
+  * Remove now-unused section in d/copyright
+  * Add lintian override for non-UTF-8 file
+  * Rules-Requires-Root: no
+  * Update debhelper-compat to 13
+  * Update d/watch version to 4
+
+ -- Scott Talbert <swt@techie.net>  Fri, 17 Sep 2021 11:43:16 -0400
+
+xlsxwriter (1.1.2-0.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Drop python2 support; Closes: #938847
+
+ -- Sandro Tosi <morph@debian.org>  Thu, 12 Dec 2019 19:34:43 -0500
+
+xlsxwriter (1.1.2-0.1) unstable; urgency=medium
+
+  * Non-maintainer upload
+  * New upstream version 1.1.2
+  * Bump Debhelper compat level
+  * Bump Standards-Version
+  * Update Vcs-* headers after migration to salsa.debian.org --
+    commented out for now
+  * Update build-dependencies
+  * Install examples
+  * Remove X-Python headers from debian/control
+
+ -- Hilko Bengen <bengen@debian.org>  Tue, 22 Jan 2019 22:17:24 +0100
+
+xlsxwriter (0.9.6-0.1) unstable; urgency=medium
+
+  * Non-maintainer upload
+  * New upstream version 0.9.6
+
+ -- Hilko Bengen <bengen@debian.org>  Sat, 21 Jan 2017 16:55:22 +0100
+
+xlsxwriter (0.9.3-0.1) unstable; urgency=medium
+
+  [ Hilko Bengen ]
+  * Non-maintainer upload
+  * New upstream release
+  * Bump Standards-Version
+
+  [ Ondřej Nový ]
+  * Fixed VCS URL (https)
+
+ -- Hilko Bengen <bengen@debian.org>  Wed, 21 Sep 2016 02:41:36 +0200
+
+xlsxwriter (0.7.3-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Zygmunt Krynicki <zygmunt.krynicki@canonical.com>  Tue, 21 Jul 2015 14:01:46 +0200
+
+xlsxwriter (0.7.2-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/control: bump standards version to 3.9.6 (no change required)
+
+ -- Zygmunt Krynicki <zygmunt.krynicki@canonical.com>  Mon, 30 Mar 2015 12:35:14 +0200
+
+xlsxwriter (0.6.7-1) unstable; urgency=medium
+
+  * New upstream release. List of changes is available on
+    http://xlsxwriter.readthedocs.org/changes.html
+  * Add doc-base files for the readme.html shipped by upstream
+  * debian/control: build-depend on dh-python
+  * debian/watch: use the new pypi redirector
+  * debian/rules: don't ship the new vba_extract script, it's a small example
+    (of many) and it doesn't seem to be that useful yet.
+  * debian/copyright: bump dates and add myself to debian/ section
+
+ -- Zygmunt Krynicki <zygmunt.krynicki@canonical.com>  Tue, 29 Apr 2014 12:25:12 +0200
+
+xlsxwriter (0.5.2-1) unstable; urgency=low
+
+  * Initial release. (Closes: #728712)
+
+ -- Sylvain Pineau <sylvain.pineau@canonical.com>  Tue, 07 Jan 2014 17:53:46 +0100
