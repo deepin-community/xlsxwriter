@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,8 +17,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('hyperlink24.xlsx')
+        self.set_filename("hyperlink24.xlsx")
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file with hyperlinks."""
@@ -30,7 +29,10 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
 
         worksheet = workbook.add_worksheet()
 
-        worksheet.write_url('A1', 'http://www.example.com/some_long_url_that_is_255_characters_long_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_z#some_long_location_that_is_255_characters_long_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_z')
+        worksheet.write_url(
+            "A1",
+            "http://www.example.com/some_long_url_that_is_255_characters_long_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_z#some_long_location_that_is_255_characters_long_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_abcdefgh_z",
+        )
 
         workbook.close()
 

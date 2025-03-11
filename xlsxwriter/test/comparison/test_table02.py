@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,8 +17,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('table02.xlsx')
+        self.set_filename("table02.xlsx")
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file with tables."""
@@ -28,15 +27,15 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
         worksheet1 = workbook.add_worksheet()
         worksheet2 = workbook.add_worksheet()
 
-        worksheet1.set_column('B:J', 10.288)
-        worksheet2.set_column('C:L', 10.288)
+        worksheet1.set_column("B:J", 10.288)
+        worksheet2.set_column("C:L", 10.288)
 
-        worksheet1.add_table('B3:E11')
-        worksheet1.add_table('G10:J16')
-        worksheet1.add_table('C18:F25')
+        worksheet1.add_table("B3:E11")
+        worksheet1.add_table("G10:J16")
+        worksheet1.add_table("C18:F25")
 
-        worksheet2.add_table('I4:L11')
-        worksheet2.add_table('C16:H23')
+        worksheet2.add_table("I4:L11")
+        worksheet2.add_table("C16:H23")
 
         workbook.close()
 

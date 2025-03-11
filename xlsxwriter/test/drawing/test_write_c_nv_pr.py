@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -25,14 +25,14 @@ class TestWriteXdrcNvPr(unittest.TestCase):
     def test_write_c_nv_pr(self):
         """Test the _write_c_nv_pr() method"""
 
-        self.drawing._write_c_nv_pr(2, 'Chart 1', None, None, None, None)
+        self.drawing._write_c_nv_pr(2, "Chart 1", None, None, None, None)
 
         exp = """<xdr:cNvPr id="2" name="Chart 1"/>"""
         got = self.fh.getvalue()
 
         self.assertEqual(got, exp)
 
-        self.drawing._write_c_nv_pr(2, 'Chart 1', None, 1, 'tip', None)
+        self.drawing._write_c_nv_pr(2, "Chart 1", None, 1, "tip", None)
 
         exp = """<xdr:cNvPr id="2" name="Chart 1"/><xdr:cNvPr id="2" name="Chart 1"><a:hlinkClick xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" r:id="rId1" tooltip="tip"/></xdr:cNvPr>"""
         got = self.fh.getvalue()

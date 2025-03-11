@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,8 +17,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('escapes05.xlsx')
+        self.set_filename("escapes05.xlsx")
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file. Check encoding of url strings."""
@@ -31,7 +30,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
         worksheet1 = workbook.add_worksheet("Start")
         worksheet2 = workbook.add_worksheet("A & B")
 
-        worksheet1.write_url('A1', "internal:'A & B'!A1", None, 'Jump to A & B')
+        worksheet1.write_url("A1", "internal:'A & B'!A1", None, "Jump to A & B")
 
         workbook.close()
 

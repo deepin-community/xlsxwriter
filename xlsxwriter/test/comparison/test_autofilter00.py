@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,9 +17,8 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('autofilter00.xlsx')
-        self.set_text_file('autofilter_data.txt')
+        self.set_filename("autofilter00.xlsx")
+        self.set_text_file("autofilter_data.txt")
 
     def test_create_file(self):
         """

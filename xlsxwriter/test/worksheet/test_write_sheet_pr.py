@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -36,7 +36,7 @@ class TestWriteSheetPr(unittest.TestCase):
     def test_write_sheet_pr_tab_color(self):
         """Test the _write_sheet_pr() method"""
 
-        self.worksheet.set_tab_color('red')
+        self.worksheet.set_tab_color("red")
         self.worksheet._write_sheet_pr()
 
         exp = """<sheetPr><tabColor rgb="FFFF0000"/></sheetPr>"""
@@ -47,7 +47,7 @@ class TestWriteSheetPr(unittest.TestCase):
     def test_write_sheet_pr_both(self):
         """Test the _write_sheet_pr() method"""
 
-        self.worksheet.set_tab_color('red')
+        self.worksheet.set_tab_color("red")
         self.worksheet.fit_to_pages(1, 1)
         self.worksheet._write_sheet_pr()
 

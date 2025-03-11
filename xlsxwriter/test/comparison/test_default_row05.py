@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,8 +17,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('default_row05.xlsx')
+        self.set_filename("default_row05.xlsx")
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file."""
@@ -29,9 +28,9 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
 
         worksheet.set_default_row(24, 1)
 
-        worksheet.write('A1', 'Foo')
-        worksheet.write('A10', 'Bar')
-        worksheet.write('A20', 'Baz')
+        worksheet.write("A1", "Foo")
+        worksheet.write("A10", "Bar")
+        worksheet.write("A20", "Baz")
 
         for row in range(1, 8 + 1):
             worksheet.set_row(row, 24)

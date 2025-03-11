@@ -1,5 +1,5 @@
 .. SPDX-License-Identifier: BSD-2-Clause
-   Copyright 2013-2021, John McNamara, jmcnamara@cpan.org
+   Copyright 2013-2023, John McNamara, jmcnamara@cpan.org
 
 .. _page_setup:
 
@@ -44,13 +44,33 @@ generally need to call this method::
 worksheet.set_page_view()
 -------------------------
 
-.. py:function:: set_page_view()
+.. py:function:: set_page_view(view=1)
 
    Set the page view mode.
+
+   :param int view: 0: Normal, 1: Page Layout, 2: Page Break.
+
 
 This method is used to display the worksheet in "Page View/Layout" mode::
 
     worksheet.set_page_view()
+
+It can also be used to set the other view modes:
+
+- 0: Normal view mode.
+- 1: Page view mode (the default).
+- 2: Page break view mode. Same as ``set_pagebreak_view()``.
+
+worksheet.set_pagebreak_view()
+------------------------------
+
+.. py:function:: set_pagebreak_view()
+
+   Set the page break view mode.
+
+This method is used to display the worksheet in "Page Break Preview" mode::
+
+    worksheet.set_pagebreak_view()
 
 
 worksheet.set_paper()
@@ -370,10 +390,11 @@ the equivalent VBA code looks like this::
     .CenterHeader = "&""Times New Roman,Regular""Hello"
     .RightHeader = ""
 
-Alternatively you can inspect the header and footer strings in an Excel file
-by unzipping it and grepping the XML sub-files. The following shows how to do
-that using `libxml's xmllint <http://xmlsoft.org/xmllint.html>`_ to format the
-XML for clarity::
+Alternatively you can inspect the header and footer strings in an Excel file by
+unzipping it and grepping the XML sub-files. The following shows how to do that
+using `libxml's xmllint
+<https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html>`_ to format the XML
+for clarity::
 
     $ unzip myfile.xlsm -d myfile
     $ xmllint --format `find myfile -name "*.xml" | xargs` | egrep "Header|Footer" | sed 's/&amp;/\&/g'
@@ -673,6 +694,7 @@ Number" option in Excel::
     # Start print from page 2.
     worksheet.set_start_page(2)
 
+
 worksheet.set_print_scale()
 ---------------------------
 
@@ -698,6 +720,19 @@ Note also that although it is valid to use both ``fit_to_pages()`` and
 ``set_print_scale()`` on the same worksheet Excel only allows one of these
 options to be active at a time. The last method call made will set the active
 option.
+
+
+worksheet.print_black_and_white()
+---------------------------------
+
+.. py:function:: print_black_and_white()
+
+   Set the worksheet to print in black and white.
+
+Set the option to print the worksheet in black and white::
+
+    worksheet.print_black_and_white()
+
 
 
 worksheet.set_h_pagebreaks()

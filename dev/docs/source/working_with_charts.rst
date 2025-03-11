@@ -1,5 +1,5 @@
 .. SPDX-License-Identifier: BSD-2-Clause
-   Copyright 2013-2021, John McNamara, jmcnamara@cpan.org
+   Copyright 2013-2023, John McNamara, jmcnamara@cpan.org
 
 .. _working_with_charts:
 
@@ -542,7 +542,7 @@ only available for Pie and Doughnut chart variants::
    :scale: 75 %
 
 The ``leader_lines`` property is used to turn on *Leader Lines* for the data
-label of a series. It is mainly used for pie charts::
+label of a series::
 
     chart.add_series({
         'values':      '=Sheet1!$A$1:$A$6',
@@ -915,7 +915,7 @@ The following properties can be set for ``line`` formats in a chart::
     dash_type
     transparency
 
-The ``none`` property is uses to turn the ``line`` off (it is always on by
+The ``none`` property is used to turn the ``line`` off (it is always on by
 default except in Scatter charts). This is useful if you wish to plot a series
 with markers but without a line::
 

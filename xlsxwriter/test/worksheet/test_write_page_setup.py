@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -27,7 +27,7 @@ class TestWritePageSetup(unittest.TestCase):
 
         self.worksheet._write_page_setup()
 
-        exp = ''
+        exp = ""
         got = self.fh.getvalue()
 
         self.assertEqual(got, exp)

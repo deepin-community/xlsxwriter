@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,13 +17,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('page_view01.xlsx')
-
-        self.ignore_files = ['xl/printerSettings/printerSettings1.bin',
-                             'xl/worksheets/_rels/sheet1.xml.rels']
-        self.ignore_elements = {'[Content_Types].xml': ['<Default Extension="bin"'],
-                                'xl/worksheets/sheet1.xml': ['<pageMargins', '<pageSetup']}
+        self.set_filename("page_view01.xlsx")
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file with print options."""
@@ -34,7 +28,11 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
 
         worksheet.set_page_view()
 
-        worksheet.write('A1', 'Foo')
+        # Options to match automatic page setup.
+        worksheet.set_paper(9)
+        worksheet.vertical_dpi = 200
+
+        worksheet.write("A1", "Foo")
 
         workbook.close()
 

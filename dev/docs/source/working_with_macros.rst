@@ -1,5 +1,5 @@
 .. SPDX-License-Identifier: BSD-2-Clause
-   Copyright 2013-2021, John McNamara, jmcnamara@cpan.org
+   Copyright 2013-2023, John McNamara, jmcnamara@cpan.org
 
 .. _macros:
 
@@ -45,6 +45,9 @@ examples directory and is also installed as a standalone executable file::
 
     $ vba_extract.py macro_file.xlsm
     Extracted: vbaProject.bin
+
+If the VBA project is signed, ``vba_extract.py`` also extracts the
+``vbaProjectSignature.bin`` file from the xlsm file.
 
 
 Adding the VBA macros to a XlsxWriter file
@@ -120,8 +123,8 @@ worksheet ``set_vba_name()`` methods as follows::
 
 You can find the names that are used in the VBA editor or by unzipping the
 ``xlsm`` file and grepping the files. The following shows how to do that using
-`libxml's xmllint <http://xmlsoft.org/xmllint.html>`_ to format the XML for
-clarity::
+`libxml's xmllint <https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html>`_
+to format the XML for clarity::
 
 
     $ unzip myfile.xlsm -d myfile
@@ -136,6 +139,20 @@ clarity::
    This step is particularly important for macros created with non-English
    versions of Excel.
 
+
+Adding a VBA macro signature file to an XlsxWriter file
+---------------------------------------------------------
+
+VBA macros can be signed in Excel to allow for blocking execution of unsigned
+macros in certain environments.
+
+The ``vba_extract.py`` utility can be used to extract the ``vbaProject.bin`` and
+``vbaProjectSignature.bin`` files from an existing xlsm file with signed macros.
+
+To add these files to the XlsxWriter workbook using the
+:func:`add_signed_vba_project` method::
+
+    workbook.add_signed_vba_project("./vbaProject.bin", "./vbaProjectSignature.bin");
 
 
 What to do if it doesn't work

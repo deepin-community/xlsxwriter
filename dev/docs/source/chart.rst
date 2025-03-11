@@ -1,5 +1,5 @@
 .. SPDX-License-Identifier: BSD-2-Clause
-   Copyright 2013-2021, John McNamara, jmcnamara@cpan.org
+   Copyright 2013-2023, John McNamara, jmcnamara@cpan.org
 
 .. _chart_class:
 
@@ -1092,11 +1092,11 @@ chart.show_blanks_as()
 
 .. py:function:: show_blanks_as(option)
 
-   Set the option for displaying blank data in a chart.
+   Set the option for displaying blank/empty data cells in a chart.
 
    :param string option: A string representing the display option.
 
-The ``show_blanks_as()`` method controls how blank data is displayed in a
+The ``show_blanks_as()`` method controls how blank/empty data is displayed in a
 chart::
 
     chart.show_blanks_as('span')
@@ -1106,6 +1106,19 @@ The available options are::
     'gap'   # Blank data is shown as a gap. The default.
     'zero'  # Blank data is displayed as zero.
     'span'  # Blank data is connected with a line.
+
+
+chart.show_na_as_empty_cell()
+-----------------------------
+
+.. py:function:: show_na_as_empty_cell()
+
+   Display ``#N/A`` on charts as blank/empty cells.
+
+
+Display ``#N/A`` values on a chart as blank/empty cells.::
+
+    chart.show_na_as_empty_cell()
 
 
 chart.show_hidden_data()

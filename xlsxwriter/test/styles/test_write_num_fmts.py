@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -28,9 +28,11 @@ class TestWriteNumFmts(unittest.TestCase):
 
         xf_format = Format()
         xf_format.num_format_index = 164
-        xf_format.set_num_format('#,##0.0')
+        xf_format.set_num_format("#,##0.0")
 
-        self.styles._set_style_properties([[xf_format], None, 0, 1, 0, 0, [], [], 0])
+        self.styles._set_style_properties(
+            [[xf_format], None, 0, ["#,##0.0"], 0, 0, [], [], 0]
+        )
 
         self.styles._write_num_fmts()
 

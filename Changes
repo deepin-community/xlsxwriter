@@ -1,3 +1,162 @@
+Release 3.1.9 - October 19 2023
+-------------------------------
+
+* Add fix for errant XML tag in chart leader lines for non-Pie charts.
+
+  :issue  :`1019` and :feature:`1012`.
+
+
+Release 3.1.8 - October 15 2023
+-------------------------------
+
+* Add support for formatting the data label in chart trendlines.
+
+  :feature:`750`.
+
+
+Release 3.1.7 - October 9 2023
+------------------------------
+
+* Add the :func:`very_hidden()` method to hide a worksheet. This is similar to
+  the :func:`hide()` method except that the worksheet cannot be unhidden in the
+  the Excel user interface. The Excel worksheet "xlSheetVeryHidden" option can
+  only be unset programmatically via VBA.
+
+  :feature:`947`.
+
+* Added fixes for column formulas in tables that were overridden by table data
+  and which also didn't take future functions into account.
+
+  :issue:`1015`.
+
+
+Release 3.1.6 - October 1 2023
+------------------------------
+
+* Added support for chart leader lines for chart types other than Pie and Doughnut.
+
+  :feature:`1012`.
+
+
+Release 3.1.5 - September 24 2023
+---------------------------------
+
+* Added support for adding signed VBA macros to workbooks via the via the
+  :func:`add_signed_vba_project` method. See `Working with VBA Macros`_.
+
+  :feature:`1008`.
+
+  .. _Working with VBA Macros: https://xlsxwriter.readthedocs.io/working_with_macros.html
+
+
+Release 3.1.4 - September 18 2023
+---------------------------------
+
+* Added support for enabling the Excel "Show #N/A as an empty cell" chart option
+  via the :func:`show_na_as_empty_cell` method.
+
+  :feature:`1008`.
+
+
+Release 3.1.3 - September 8 2023
+--------------------------------
+
+* Added support for custom total formulas to worksheet tables.
+
+  :feature:`982`.
+
+
+Release 3.1.2 - May 28 2023
+---------------------------
+
+* Added worksheet page break preview mode via :func:`set_pagebreak_view()`.
+
+
+Release 3.1.1 - May 21 2023
+---------------------------
+
+* Add support for new Excel dynamic functions added in 2023.
+
+  :issue:`984`.
+
+* Added support for adding a color to the `invert_if_negative` chart option.
+
+  :feature:`854`.
+
+
+Release 3.1.0 - April 13 2023
+-----------------------------
+
+* Minor fix for cell color issue.
+
+
+Release 3.0.9 - March 10 2023
+-----------------------------
+
+* Add documentation and examples on :ref:`ewx_polars` to demonstrate new `Polars
+  <https://www.pola.rs>`_ integration of XlsxWriter in `write_excel()`_.
+
+.. _write_excel(): https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.write_excel.html#polars.DataFrame.write_excel
+
+* Add fix for rare issue with duplicate number formats.
+
+
+Release 3.0.8 - February 3 2023
+-------------------------------
+
+* Fix for ``autofit()`` exception when user defined column width was ``None``.
+
+
+Release 3.0.7 - January 14 2023
+-------------------------------
+
+* Improved :func:`autofit` algorithm to account for the additional width of
+  autofilter and table dropdowns.
+
+* Improved :func:`autofit` take user defined column widths into account.
+
+  Autofit will now only update the width for an existing column if it is greater
+  than the user defined value. This allows the user to pre-load a minimum column
+  width.
+
+  :feature:`936`.
+
+
+Release 3.0.6 - January 5 2023
+------------------------------
+
+* Added simulated worksheet :func:`autofit` method.
+
+  :feature:`936`.
+
+
+Release 3.0.5 - January 1 2023
+------------------------------
+
+* Added ``OverlappingRange`` exception which is raised during Worksheet
+  :func:`add_table()` or :func:`merge_range()` if the range overlaps an existing
+  worksheet table or merge range. This is a file corruption error in Excel. See
+  :ref:`exceptions`.
+
+  :issue:`848`
+
+
+Release 3.0.4 - December 28 2022
+--------------------------------
+
+* Roll up release of several minor fixes.
+
+* Drop support for EOL Python 3.4 and 3.5.
+
+
+Release 3.0.3 - February 27 2022
+--------------------------------
+
+* Added :func:`print_black_and_white` worksheet method to set "Black and
+  White" print options.
+
+  :feature:`862`.
+
 
 Release 3.0.2 - October 31 2021
 -------------------------------
@@ -527,7 +686,7 @@ Release 0.9.6 - Dec 26 2016
 * Fix for table with data but without a header. :issue:`405`.
 
 * Add a warning when the number of series in a chart exceeds Excel's limit of
-  255. :issue:`399`.
+  1.   :issue:`399`.
 
 
 Release 0.9.5 - Dec 24 2016
@@ -936,7 +1095,7 @@ Release 0.5.4 - May 4 2014
   :issue:`115`.
 
 * Added clearer reporting of nested exceptions in ``write()`` methods.
-  :issue:`108`.
+  :pull:`108`.
 
 * Added support for ``inside_base`` data label position in charts.
 

@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,8 +17,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('format11.xlsx')
+        self.set_filename("format11.xlsx")
 
     def test_create_file(self):
         """Test a vertical and horizontal centered format."""
@@ -27,12 +26,9 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
 
         worksheet = workbook.add_worksheet()
 
-        centered = workbook.add_format({
-            'align': 'center',
-            'valign': 'vcenter'
-        })
+        centered = workbook.add_format({"align": "center", "valign": "vcenter"})
 
-        worksheet.write('B2', 'Foo', centered)
+        worksheet.write("B2", "Foo", centered)
 
         workbook.close()
 

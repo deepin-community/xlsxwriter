@@ -1,5 +1,5 @@
 .. SPDX-License-Identifier: BSD-2-Clause
-   Copyright 2013-2021, John McNamara, jmcnamara@cpan.org
+   Copyright 2013-2023, John McNamara, jmcnamara@cpan.org
 
 .. _working_with_textboxes:
 
@@ -193,7 +193,7 @@ following properties can be set for ``line`` formats in a textbox::
     width
     dash_type
 
-The ``none`` property is uses to turn the ``line`` off (it is always on by
+The ``none`` property is used to turn the ``line`` off (it is always on by
 default)::
 
     worksheet.insert_textbox('B2', 'A textbox with no border line',

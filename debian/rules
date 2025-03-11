@@ -4,7 +4,7 @@ export PYBUILD_BEFORE_TEST=cp -r {dir}/xlsxwriter/test {build_dir}/xlsxwriter
 export PYBUILD_AFTER_TEST=rm -rf {build_dir}/xlsxwriter/test
 
 %:
-	dh $@ --with python3 --buildsystem=pybuild
+	dh $@ --buildsystem=pybuild
 
 override_dh_installdocs:
 	dh_installdocs -XXlsxWriter.pdf

@@ -67,6 +67,35 @@ function check_spellcheck {
 
 #############################################################
 #
+# Run lint.
+#
+function check_lint {
+
+    echo
+    echo -n "Is the lint ok?                         [y/N]: "
+    read RESPONSE
+
+    if [ "$RESPONSE" != "y" ]; then
+
+        echo -n "    Run make lint now?                  [y/N]: "
+        read RESPONSE
+
+        if [ "$RESPONSE" != "y" ]; then
+            echo
+            echo -e "Please run: make lint\n";
+            exit 1
+        else
+            echo "    Running make lint...";
+            make lint
+            check_lint
+         fi
+    fi
+}
+
+
+
+#############################################################
+#
 # Run test_flake8.
 #
 function check_test_flake8 {
@@ -98,8 +127,12 @@ function check_test_flake8 {
 # Run testwarnings.
 #
 function check_testwarnings {
-    clear
 
+    echo
+    echo
+    echo
+    echo
+    echo
     echo
     echo -n "Is the testwarnings ok?              [y/N]: "
     read RESPONSE
@@ -178,11 +211,34 @@ function check_versions {
 
 #############################################################
 #
+# Check that the docs build correctly.
+#
+function check_doc_links {
+
+    clear
+    echo
+    echo -n     "Are the docs links okay?   [y/N]: "
+    read RESPONSE
+
+    if [ "$RESPONSE" != "y" ]; then
+        echo -n "    Check links?           [y/N]: "
+        read RESPONSE
+
+        if [ "$RESPONSE" == "y" ]; then
+            make linkcheck
+        fi
+    fi
+}
+
+
+
+
+#############################################################
+#
 # Check that the PDF doc is up to date.
 #
 function check_pdf_doc {
 
-    clear
     echo
     echo -n     "Is the PDF doc up to date?   [y/N]: "
     read RESPONSE
@@ -194,6 +250,28 @@ function check_pdf_doc {
         if [ "$RESPONSE" == "y" ]; then
             make -C dev/docs latexpdf
             cp -r dev/docs/build/latex/XlsxWriter.pdf docs
+        fi
+    fi
+}
+
+
+#############################################################
+#
+# Check that the docs build correctly.
+#
+function check_doc_build {
+
+    echo
+    echo -n     "Are the docs building cleanly?   [y/N]: "
+    read RESPONSE
+
+    if [ "$RESPONSE" != "y" ]; then
+        echo -n "    Build docs?             [y/N]: "
+        read RESPONSE
+
+        if [ "$RESPONSE" == "y" ]; then
+            make clean
+            make docs
         fi
     fi
 }
@@ -229,10 +307,13 @@ function check_git_status {
 
 check_test_status
 check_spellcheck
+check_lint
 check_test_flake8
+check_doc_links
 check_testwarnings
 check_changefile
 check_versions
+check_doc_build
 check_pdf_doc
 check_git_status
 

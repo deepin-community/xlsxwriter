@@ -1,5 +1,5 @@
 .. SPDX-License-Identifier: BSD-2-Clause
-   Copyright 2013-2021, John McNamara, jmcnamara@cpan.org
+   Copyright 2013-2023, John McNamara, jmcnamara@cpan.org
 
 .. _worksheet:
 
@@ -73,7 +73,7 @@ The rules for handling data in ``write()`` are as follows:
 
 Strings are then handled as follows:
 
-* Strings that start with ``"="`` are take to match a formula and are written
+* Strings that start with ``"="`` are assumed to match a formula and are written
   using :func:`write_formula()`. This can be overridden, see below.
 
 * Strings that match supported URL types are written using
@@ -291,7 +291,8 @@ double-precision floating point. This means that, in most cases, the maximum
 number of digits that can be stored in Excel without losing precision is 15.
 
 .. note::
-   NAN and INF are not supported and will raise a TypeError exception.
+   NAN and INF are not supported and will raise a TypeError exception unless
+   the ``nan_inf_to_errors`` Workbook() option is used.
 
 The ``cell_format`` parameter is used to apply formatting to the cell. This
 parameter is optional but when present is should be a valid
@@ -1111,31 +1112,15 @@ Examples::
     worksheet.set_column('E:E', 20)  # Column  E   width set to 20.
     worksheet.set_column('F:H', 30)  # Columns F-H width set to 30.
 
-Ranges cannot overlap. Each unique contiguous range should be specified
-separately::
-
-    # This won't work.
-    worksheet.set_column('A:D', 50)
-    worksheet.set_column('C:C', 10)
-
-    # It needs to be split into non-overlapping regions.
-    worksheet.set_column('A:B', 50)
-    worksheet.set_column('C:C', 10)
-    worksheet.set_column('D:E', 50)
-
 The ``width`` parameter sets the column width in the same units used by Excel
 which is: the number of characters in the default font. The default width is
 8.43 in the default font of Calibri 11. The actual relationship between a
 string width and a column width in Excel is complex. See the `following
-explanation of column widths <https://support.microsoft.com/en-us/kb/214123>`_
+explanation of column widths <https://learn.microsoft.com/en-US/office/troubleshoot/excel/determine-column-widths>`_
 from the Microsoft support documentation for more details. To set the width in
 pixels use the :func:`set_column_pixels` method.
 
-There is no way to specify "AutoFit" for a column in the Excel file
-format. This feature is only available at runtime from within Excel. It is
-possible to simulate "AutoFit" in your application by tracking the maximum
-width of the data in the column as your write it and then adjusting the column
-width at the end.
+See also the  :func:`autofit` method for simulated autofitting of column widths.
 
 As usual the ``cell_format`` :ref:`Format <format>` parameter is optional. If
 you wish to set the format without changing the default column width you can
@@ -1227,6 +1212,50 @@ that the width can be set in pixels instead of Excel character units::
 
 All other parameters and options are the same as ``set_column()``. See the
 documentation on :func:`set_column` for more details.
+
+
+worksheet.autofit()
+-------------------
+
+.. py:function:: autofit()
+
+   Simulates autofit for column widths.
+
+   :returns:  Nothing.
+
+The ``autofit()`` method can be used to simulate autofitting column widths based
+on the largest string/number in the column::
+
+    worksheet.autofit()
+
+.. image:: _images/autofit_win.png
+
+See :ref:`ex_autofit`
+
+There is no option in the xlsx file format that can be used to say "autofit
+columns on loading". Auto-fitting of columns is something that Excel does at
+runtime when it has access to all of the worksheet information as well as the
+Windows functions for calculating display areas based on fonts and formatting.
+
+The ``worksheet.autofit()`` method simulates this behavior by calculating string
+widths using metrics taken from Excel. As such there are some limitations to be
+aware of when using this method:
+
+- It is a simulated method and may not be accurate in all cases.
+- It is based on the default font and font size of Calibri 11. It will not give
+  accurate results for other fonts or font sizes.
+
+This isn't perfect but for most cases it should be sufficient and if not you can
+set your own widths, see below.
+
+The ``autofit()`` method won't override a user defined column width set with
+``set_column()`` or ``set_column_pixels()`` if it is greater than the autofit
+value. This allows the user to set a minimum width value for a column.
+
+You can also  call ``set_column()`` and  ``set_column_pixels()`` after
+``autofit()`` to override any of the calculated values.
+
+
 
 
 worksheet.insert_image()
@@ -1765,9 +1794,12 @@ worksheet.add_table()
    :type  last_col:    int
    :type  options:     dict
 
+   :raises OverlappingRange: if the range overlaps a previous merge or table range.
+
    :returns:  0: Success.
    :returns: -1: Row or column is out of worksheet bounds.
    :returns: -2: Incorrect parameter or option.
+   :returns: -3: Not supported in ``constant_memory`` mode.
 
 The ``add_table()`` method is used to group a range of cells into an Excel
 Table::
@@ -2039,6 +2071,20 @@ sheet::
 
 See :ref:`ex_hide_sheet` for more details.
 
+
+worksheet.very_hidden()
+-----------------------
+
+.. py:function:: very_hidden()
+
+   Hide the current worksheet. Can only be unhidden by VBA.
+
+The ``very_hidden()`` method can be used to hide a worksheet similar to the
+``hide()`` method. The difference is that the worksheet cannot be unhidden in
+the the Excel user interface. The Excel worksheet "xlSheetVeryHidden" option can
+only be unset programmatically by VBA.
+
+
 worksheet.set_first_sheet()
 ---------------------------
 
@@ -2080,6 +2126,8 @@ worksheet.merge_range()
    :type  last_row:    int
    :type  last_col:    int
    :type  cell_format: :ref:`Format <format>`
+
+   :raises OverlappingRange: if the range overlaps a previous merge or table range.
 
    :returns:  0: Success.
    :returns: -1: Row or column is out of worksheet bounds.
@@ -2321,7 +2369,7 @@ worksheet.freeze_panes()
    :param int top_row:  Topmost visible row in scrolling region of pane.
    :param int left_col: Leftmost visible row in scrolling region of pane.
 
-This ``freeze_panes`` method can be used to divide a worksheet into horizontal
+The ``freeze_panes()`` method can be used to divide a worksheet into horizontal
 or vertical regions known as panes and to "freeze" these panes so that the
 splitter bars are not visible.
 
@@ -2441,7 +2489,7 @@ worksheets that use right-to-left as the default direction.
 .. image:: _images/right_to_left.png
 
 See also the Format :func:`set_reading_order` property to set the direction of the
-text withing cells and the :ref:`ex_right_to_left` example program.
+text within cells and the :ref:`ex_right_to_left` example program.
 
 
 worksheet.hide_zero()
@@ -2542,8 +2590,9 @@ You can optionally add a password to the worksheet protection::
 
     worksheet.protect('abc123')
 
-Passing the empty string ``''`` is the same as turning on protection without a
-password.
+The password should be an ASCII string. Passing the empty string ``''`` is the
+same as turning on protection without a password. See the note below on the
+"password" strength.
 
 You can specify which worksheet elements you wish to protect by passing a
 dictionary in the ``options`` argument with any or all of the following keys::
@@ -2586,7 +2635,7 @@ See also the :func:`set_locked` and :func:`set_hidden` format methods and
 
    Worksheet level passwords in Excel offer very weak protection. They do not
    encrypt your data and are very easy to deactivate. Full workbook encryption
-   is not supported by ``XlsxWriter``. However, it is possible to encrypt an
+   is not supported by XlsxWriter. However, it is possible to encrypt an
    XlsxWriter file using a third party open source tool called `msoffice-crypt
    <https://github.com/herumi/msoffice>`_. This works for macOS, Linux and
    Windows::

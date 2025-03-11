@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,8 +17,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('hyperlink12.xlsx')
+        self.set_filename("hyperlink12.xlsx")
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file with hyperlinks. This example has link formatting."""
@@ -26,11 +25,11 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
         workbook = Workbook(self.got_filename)
 
         worksheet = workbook.add_worksheet()
-        format = workbook.add_format({'color': 'blue', 'underline': 1})
+        format = workbook.add_format({"color": "blue", "underline": 1})
 
-        worksheet.write_url('A1', 'mailto:jmcnamara@cpan.org', format)
+        worksheet.write_url("A1", "mailto:jmcnamara@cpan.org", format)
 
-        worksheet.write_url('A3', 'ftp://perl.org/', format)
+        worksheet.write_url("A3", "ftp://perl.org/", format)
 
         workbook.close()
 
@@ -42,11 +41,11 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
         workbook = Workbook(self.got_filename)
 
         worksheet = workbook.add_worksheet()
-        format = workbook.add_format({'color': 'blue', 'underline': 1})
+        format = workbook.add_format({"color": "blue", "underline": 1})
 
-        worksheet.write('A1', 'mailto:jmcnamara@cpan.org', format)
+        worksheet.write("A1", "mailto:jmcnamara@cpan.org", format)
 
-        worksheet.write('A3', 'ftp://perl.org/', format)
+        worksheet.write("A3", "ftp://perl.org/", format)
 
         workbook.close()
 

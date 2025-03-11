@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,8 +17,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('rich_string06.xlsx')
+        self.set_filename("rich_string06.xlsx")
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file."""
@@ -27,11 +26,11 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
 
         worksheet = workbook.add_worksheet()
 
-        red = workbook.add_format({'color': 'red'})
+        red = workbook.add_format({"color": "red"})
 
-        worksheet.write('A1', 'Foo', red)
-        worksheet.write('A2', 'Bar')
-        worksheet.write_rich_string('A3', 'ab', red, 'cde', 'fg')
+        worksheet.write("A1", "Foo", red)
+        worksheet.write("A2", "Bar")
+        worksheet.write_rich_string("A3", "ab", red, "cde", "fg")
 
         workbook.close()
 

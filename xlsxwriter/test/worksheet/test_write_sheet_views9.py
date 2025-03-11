@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -28,7 +28,7 @@ class TestWriteSheetViews(unittest.TestCase):
 
         self.worksheet.select()
 
-        self.worksheet.set_selection('A2')
+        self.worksheet.set_selection("A2")
         self.worksheet.split_panes(15, 0, 20, 0)
 
         self.worksheet._write_sheet_views()
@@ -43,7 +43,7 @@ class TestWriteSheetViews(unittest.TestCase):
 
         self.worksheet.select()
 
-        self.worksheet.set_selection('A21')
+        self.worksheet.set_selection("A21")
         self.worksheet.split_panes(15, 0, 20, 0)
 
         self.worksheet._write_sheet_views()
@@ -58,7 +58,7 @@ class TestWriteSheetViews(unittest.TestCase):
 
         self.worksheet.select()
 
-        self.worksheet.set_selection('B1')
+        self.worksheet.set_selection("B1")
         self.worksheet.split_panes(0, 8.43, 0, 4)
 
         self.worksheet._write_sheet_views()
@@ -73,7 +73,7 @@ class TestWriteSheetViews(unittest.TestCase):
 
         self.worksheet.select()
 
-        self.worksheet.set_selection('E1')
+        self.worksheet.set_selection("E1")
         self.worksheet.split_panes(0, 8.43, 0, 4)
 
         self.worksheet._write_sheet_views()

@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,8 +17,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('set_column01.xlsx')
+        self.set_filename("set_column01.xlsx")
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file."""
@@ -27,7 +26,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
 
         worksheet = workbook.add_worksheet()
 
-        worksheet.set_column("A:A", 0.08)
+        worksheet.set_column("A:Z", 0.08)  # Test that the cols are overridden.
         worksheet.set_column("B:B", 0.17)
         worksheet.set_column("C:C", 0.25)
         worksheet.set_column("D:D", 0.33)

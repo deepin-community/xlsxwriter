@@ -1,5 +1,5 @@
 .. SPDX-License-Identifier: BSD-2-Clause
-   Copyright 2013-2021, John McNamara, jmcnamara@cpan.org
+   Copyright 2013-2023, John McNamara, jmcnamara@cpan.org
 
 .. _main_examples:
 
@@ -25,6 +25,7 @@ directory of the XlsxWriter distribution.
    example_conditional_format.rst
    example_defined_name.rst
    example_merge1.rst
+   example_autofit.rst
    example_rich_strings.rst
    example_merge_rich.rst
    example_images.rst
@@ -50,6 +51,7 @@ directory of the XlsxWriter distribution.
    example_unicode.rst
    example_unicode_polish_utf8.rst
    example_unicode_shift_jis.rst
+   example_watermark.rst
    example_background.rst
    example_tab_colors.rst
    example_diagonal_border.rst

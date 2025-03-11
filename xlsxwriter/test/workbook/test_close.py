@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import os
@@ -19,10 +19,11 @@ class TestCloseWithException(unittest.TestCase):
     Test the Workbook close() exception.
 
     """
+
     def test_non_existent_dir(self):
         """Test the _check_sheetname() method"""
 
-        self.workbook = Workbook('non_existent_path/test.xlsx')
+        self.workbook = Workbook("non_existent_path/test.xlsx")
         self.workbook.add_worksheet()
 
         with self.assertRaises(FileCreateError):
@@ -33,7 +34,7 @@ class TestCloseWithException(unittest.TestCase):
 
         filepath = tempfile.mktemp()
 
-        warnings.simplefilter('always')
+        warnings.simplefilter("always")
         with warnings.catch_warnings(record=True) as warnings_emitted:
             workbook = Workbook(filepath, dict(constant_memory=True))
             workbook.close()

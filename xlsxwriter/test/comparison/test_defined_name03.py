@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,15 +17,14 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('defined_name03.xlsx')
+        self.set_filename("defined_name03.xlsx")
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file with defined names."""
 
         workbook = Workbook(self.got_filename)
 
-        worksheet1 = workbook.add_worksheet('sheet One')
+        worksheet1 = workbook.add_worksheet("sheet One")
 
         workbook.define_name("Sales", "='sheet One'!G1:H10")
 

@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -30,90 +30,73 @@ class TestExtractFilterTokens(unittest.TestCase):
                 None,
                 [],
             ],
-
             [
-                '',
+                "",
                 [],
             ],
-
             [
-                '0 <  2001',
-                ['0', '<', '2001'],
+                "0 <  2001",
+                ["0", "<", "2001"],
             ],
-
             [
-                'x <  2000',
-                ['x', '<', '2000'],
+                "x <  2000",
+                ["x", "<", "2000"],
             ],
-
             [
-                'x >  2000',
-                ['x', '>', '2000'],
+                "x >  2000",
+                ["x", ">", "2000"],
             ],
-
             [
-                'x == 2000',
-                ['x', '==', '2000'],
+                "x == 2000",
+                ["x", "==", "2000"],
             ],
-
             [
-                'x >  2000 and x <  5000',
-                ['x', '>', '2000', 'and', 'x', '<', '5000'],
+                "x >  2000 and x <  5000",
+                ["x", ">", "2000", "and", "x", "<", "5000"],
             ],
-
             [
                 'x = "goo"',
-                ['x', '=', 'goo'],
+                ["x", "=", "goo"],
             ],
-
             [
-                'x = moo',
-                ['x', '=', 'moo'],
+                "x = moo",
+                ["x", "=", "moo"],
             ],
-
             [
                 'x = "foo baz"',
-                ['x', '=', 'foo baz'],
+                ["x", "=", "foo baz"],
             ],
-
             [
                 'x = "moo "" bar"',
-                ['x', '=', 'moo " bar'],
+                ["x", "=", 'moo " bar'],
             ],
-
             [
                 'x = "foo bar" or x = "bar foo"',
-                ['x', '=', 'foo bar', 'or', 'x', '=', 'bar foo'],
+                ["x", "=", "foo bar", "or", "x", "=", "bar foo"],
             ],
-
             [
                 'x = "foo "" bar" or x = "bar "" foo"',
-                ['x', '=', 'foo " bar', 'or', 'x', '=', 'bar " foo'],
+                ["x", "=", 'foo " bar', "or", "x", "=", 'bar " foo'],
             ],
-
             [
                 'x = """"""""',
-                ['x', '=', '"""'],
+                ["x", "=", '"""'],
             ],
-
             [
-                'x = Blanks',
-                ['x', '=', 'Blanks'],
+                "x = Blanks",
+                ["x", "=", "Blanks"],
             ],
-
             [
-                'x = NonBlanks',
-                ['x', '=', 'NonBlanks'],
+                "x = NonBlanks",
+                ["x", "=", "NonBlanks"],
             ],
-
             [
-                'top 10 %',
-                ['top', '10', '%'],
+                "top 10 %",
+                ["top", "10", "%"],
             ],
-
             [
-                'top 10 items',
-                ['top', '10', 'items'],
+                "top 10 items",
+                ["top", "10", "items"],
             ],
         ]
 

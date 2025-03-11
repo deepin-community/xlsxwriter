@@ -2,7 +2,7 @@
 # Simple Makefile for the XlsxWriter project.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 .PHONY: docs
@@ -36,12 +36,8 @@ install:
 test:
 	@~/.pythonbrew/pythons/Python-3.9.0/bin/python -m unittest discover
 
-# Test with stable Python 2/3 releases.
+# Test with stable Python 3 releases.
 testpythons:
-	@echo "Testing with Python 3.4.1:"
-	@~/.pythonbrew/pythons/Python-3.4.1/bin/py.test -q
-	@echo "Testing with Python 3.5.0:"
-	@~/.pythonbrew/pythons/Python-3.5.0/bin/py.test -q
 	@echo "Testing with Python 3.6.6:"
 	@~/.pythonbrew/pythons/Python-3.6.6/bin/py.test -q
 	@echo "Testing with Python 3.7.0:"
@@ -50,11 +46,21 @@ testpythons:
 	@~/.pythonbrew/pythons/Python-3.8.0/bin/py.test -q
 	@echo "Testing with Python 3.9.0:"
 	@~/.pythonbrew/pythons/Python-3.9.0/bin/py.test -q
+	@echo "Testing with Python 3.10.0:"
+	@~/.pythonbrew/pythons/Python-3.10.0/bin/py.test -q
+	@echo "Testing with Python 3.11.1:"
+	@~/.pythonbrew/pythons/Python-3.11.1/bin/py.test -q
 
 test_flake8:
-	@ls -1 xlsxwriter/*.py | egrep -v "theme|__init__" | xargs flake8 --show-source
+	@ls -1 xlsxwriter/*.py | egrep -v "theme|__init__" | xargs flake8 --show-source --max-line-length=88 --ignore=E203,W503
 	@flake8 --ignore=E501 xlsxwriter/theme.py
-	@find xlsxwriter/test -name \*.py | xargs flake8 --ignore=E501,F841
+	@find xlsxwriter/test -name \*.py | xargs flake8 --ignore=E501,F841,W503
+
+lint:
+	@ruff xlsxwriter/*.py
+	@ruff xlsxwriter/test --ignore=E501,F841
+	@ruff examples
+	@black --check xlsxwriter/ examples/
 
 tags:
 	$(Q)rm -f TAGS
@@ -79,7 +85,7 @@ release: releasecheck
 	@git push --tags
 
 	@rm -rf dist/ build/ XlsxWriter.egg-info/
-	@python setup.py sdist bdist_wheel
+	@python3 setup.py sdist bdist_wheel
 	@twine upload dist/*
 	@rm -rf dist/ build/ XlsxWriter.egg-info/
 

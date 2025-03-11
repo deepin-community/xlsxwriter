@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,8 +17,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('image28.xlsx')
+        self.set_filename("image28.xlsx")
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file with image(s)."""
@@ -27,7 +26,9 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
 
         worksheet = workbook.add_worksheet()
 
-        worksheet.insert_image(0, 6, self.image_dir + 'red_208.png', {'x_offset': 46, 'y_offset': 1})
+        worksheet.insert_image(
+            0, 6, self.image_dir + "red_208.png", {"x_offset": 46, "y_offset": 1}
+        )
 
         workbook.close()
 
