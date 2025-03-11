@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -25,7 +25,7 @@ class TestWriteSi(unittest.TestCase):
     def test_write_si(self):
         """Test the _write_si() method"""
 
-        self.sharedstrings._write_si('neptune')
+        self.sharedstrings._write_si("neptune")
 
         exp = """<si><t>neptune</t></si>"""
         got = self.fh.getvalue()

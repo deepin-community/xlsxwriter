@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,10 +17,13 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
+        self.set_filename("table08.xlsx")
 
-        self.set_filename('table08.xlsx')
-
-        self.ignore_files = ['xl/calcChain.xml', '[Content_Types].xml', 'xl/_rels/workbook.xml.rels']
+        self.ignore_files = [
+            "xl/calcChain.xml",
+            "[Content_Types].xml",
+            "xl/_rels/workbook.xml.rels",
+        ]
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file with tables."""
@@ -29,20 +32,26 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
 
         worksheet = workbook.add_worksheet()
 
-        worksheet.set_column('C:F', 10.288)
+        worksheet.set_column("C:F", 10.288)
 
-        worksheet.write_string('A1', 'Column1')
-        worksheet.write_string('B1', 'Column2')
-        worksheet.write_string('C1', 'Column3')
-        worksheet.write_string('D1', 'Column4')
-        worksheet.write_string('E1', 'Total')
+        worksheet.write_string("A1", "Column1")
+        worksheet.write_string("B1", "Column2")
+        worksheet.write_string("C1", "Column3")
+        worksheet.write_string("D1", "Column4")
+        worksheet.write_string("E1", "Total")
 
-        worksheet.add_table('C3:F14', {'total_row': 1,
-                                       'columns': [{'total_string': 'Total'},
-                                                   {},
-                                                   {},
-                                                   {'total_function': 'count'},
-                                                   ]})
+        worksheet.add_table(
+            "C3:F14",
+            {
+                "total_row": 1,
+                "columns": [
+                    {"total_string": "Total"},
+                    {},
+                    {},
+                    {"total_function": "count"},
+                ],
+            },
+        )
 
         workbook.close()
 

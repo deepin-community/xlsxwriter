@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -27,7 +27,7 @@ class TestWriteSheetViews(unittest.TestCase):
 
         self.worksheet.select()
 
-        self.worksheet.set_selection('A1')
+        self.worksheet.set_selection("A1")
 
         self.worksheet._write_sheet_views()
 
@@ -41,7 +41,7 @@ class TestWriteSheetViews(unittest.TestCase):
 
         self.worksheet.select()
 
-        self.worksheet.set_selection('A2')
+        self.worksheet.set_selection("A2")
 
         self.worksheet._write_sheet_views()
 
@@ -55,7 +55,7 @@ class TestWriteSheetViews(unittest.TestCase):
 
         self.worksheet.select()
 
-        self.worksheet.set_selection('B1')
+        self.worksheet.set_selection("B1")
 
         self.worksheet._write_sheet_views()
 
@@ -69,7 +69,7 @@ class TestWriteSheetViews(unittest.TestCase):
 
         self.worksheet.select()
 
-        self.worksheet.set_selection('D3')
+        self.worksheet.set_selection("D3")
 
         self.worksheet._write_sheet_views()
 
@@ -83,7 +83,7 @@ class TestWriteSheetViews(unittest.TestCase):
 
         self.worksheet.select()
 
-        self.worksheet.set_selection('D3:F4')
+        self.worksheet.set_selection("D3:F4")
 
         self.worksheet._write_sheet_views()
 
@@ -98,7 +98,7 @@ class TestWriteSheetViews(unittest.TestCase):
         self.worksheet.select()
 
         # With reversed selection direction.
-        self.worksheet.set_selection('F4:D3')
+        self.worksheet.set_selection("F4:D3")
 
         self.worksheet._write_sheet_views()
 
@@ -113,7 +113,7 @@ class TestWriteSheetViews(unittest.TestCase):
         self.worksheet.select()
 
         # Should be the same as 'A2'
-        self.worksheet.set_selection('A2:A2')
+        self.worksheet.set_selection("A2:A2")
 
         self.worksheet._write_sheet_views()
 

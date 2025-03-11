@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -25,7 +25,7 @@ class TestWriteMruColors(unittest.TestCase):
     def test_write_mru_colors(self):
         """Test the _write_mru_colors() method"""
 
-        self.styles._write_mru_colors(['FF26DA55', 'FF792DC8', 'FF646462'])
+        self.styles._write_mru_colors(["FF26DA55", "FF792DC8", "FF646462"])
 
         exp = """<mruColors><color rgb="FF646462"/><color rgb="FF792DC8"/><color rgb="FF26DA55"/></mruColors>"""
         got = self.fh.getvalue()

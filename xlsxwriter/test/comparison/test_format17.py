@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2019, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,8 +17,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('format17.xlsx')
+        self.set_filename("format17.xlsx")
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file with a pattern only."""
@@ -26,9 +25,9 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
         workbook = Workbook(self.got_filename)
 
         worksheet = workbook.add_worksheet()
-        pattern = workbook.add_format({'pattern': 2, 'fg_color': 'red'})
+        pattern = workbook.add_format({"pattern": 2, "fg_color": "red"})
 
-        worksheet.write('A1', '', pattern)
+        worksheet.write("A1", "", pattern)
 
         workbook.close()
 

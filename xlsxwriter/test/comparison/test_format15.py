@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,8 +17,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('format15.xlsx')
+        self.set_filename("format15.xlsx")
 
     def test_create_file_zero_number_format(self):
         """Test the creation of a simple XlsxWriter file 0 number format."""
@@ -27,11 +26,11 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
 
         worksheet = workbook.add_worksheet()
 
-        format1 = workbook.add_format({'bold': 1})
-        format2 = workbook.add_format({'bold': 1, 'num_format': 0})
+        format1 = workbook.add_format({"bold": 1})
+        format2 = workbook.add_format({"bold": 1, "num_format": 0})
 
-        worksheet.write('A1', 1, format1)
-        worksheet.write('A2', 2, format2)
+        worksheet.write("A1", 1, format1)
+        worksheet.write("A2", 2, format2)
 
         workbook.close()
 
@@ -44,11 +43,11 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
 
         worksheet = workbook.add_worksheet()
 
-        format1 = workbook.add_format({'bold': 1})
-        format2 = workbook.add_format({'bold': 1, 'num_format': '0'})
+        format1 = workbook.add_format({"bold": 1})
+        format2 = workbook.add_format({"bold": 1, "num_format": "0"})
 
-        worksheet.write('A1', 1, format1)
-        worksheet.write('A2', 2, format2)
+        worksheet.write("A1", 1, format1)
+        worksheet.write("A2", 2, format2)
 
         workbook.close()
 

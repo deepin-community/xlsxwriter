@@ -1,5 +1,5 @@
 .. SPDX-License-Identifier: BSD-2-Clause
-   Copyright 2013-2021, John McNamara, jmcnamara@cpan.org
+   Copyright 2013-2023, John McNamara, jmcnamara@cpan.org
 
 .. _working_with_data:
 
@@ -224,7 +224,7 @@ To use XlsxWriter with Pandas you specify it as the Excel writer *engine*::
     df.to_excel(writer, sheet_name='Sheet1')
 
     # Close the Pandas Excel writer and output the Excel file.
-    writer.save()
+    writer.close()
 
 The output from this would look like the following:
 
@@ -238,7 +238,7 @@ For more information on using Pandas with XlsxWriter see :ref:`ewx_pandas`.
 Writing user defined types
 --------------------------
 
-As shown in the the first section above, the worksheet :func:`write` method
+As shown in the first section above, the worksheet :func:`write` method
 maps the main Python data types to Excel's data types. If you want to write an
 unsupported type then you can either avoid ``write()`` and map the user type
 in your code to one of the more specific write methods or you can extend it

@@ -1,5 +1,5 @@
 .. SPDX-License-Identifier: BSD-2-Clause
-   Copyright 2013-2021, John McNamara, jmcnamara@cpan.org
+   Copyright 2013-2023, John McNamara, jmcnamara@cpan.org
 
 .. _tables:
 
@@ -14,7 +14,7 @@ formatting.
 .. image:: _images/tables12.png
 
 For more information see
-`An Overview of Excel Tables <http://office.microsoft.com/en-us/excel-help/overview-of-excel-tables-HA010048546.aspx>`_
+`An Overview of Excel Tables <https://support.microsoft.com/en-us/office/overview-of-excel-tables-7ab0bb7d-3a9e-4b56-a3c9-6c94334e492c>`_
 in the Microsoft Office documentation.
 
 .. Note::
@@ -185,6 +185,9 @@ may be bold text or a different color. It is off by default::
 
 See the above image.
 
+
+.. _tables_style:
+
 style
 -----
 
@@ -216,13 +219,7 @@ parameter can be used to set the name of the table::
 If you override the table name you must ensure that it doesn't clash with an
 existing table name and that it follows Excel's requirements for table names,
 see the `Microsoft Office documentation
-<http://office.microsoft.com/en-001/excel-help/define-and-use-names-in-formulas-HA010147120.aspx>`_.
-
-If you need to know the name of the table, for example to use it in a formula,
-you can get it as follows::
-
-    table = worksheet.add_table('B3:F7')
-    table_name = table.name
+<https://support.microsoft.com/en-us/office/rename-an-excel-table-fbf49a4f-82a3-43eb-8ba2-44d21233b114>`_.
 
 
 total_row
@@ -312,7 +309,7 @@ The Excel 2007 style ``[#This Row]`` and Excel 2010 style ``@`` structural
 references are supported within the formula. However, other Excel 2010
 additions to structural references aren't supported and formulas should
 conform to Excel 2007 style formulas. See the Microsoft documentation on
-`Using structured references with Excel tables <http://office.microsoft.com/en-us/excel-help/using-structured-references-with-excel-tables-HA010155686.aspx>`_
+`Using structured references with Excel tables <https://support.microsoft.com/en-us/office/using-structured-references-with-excel-tables-f5ed2452-2337-4f71-bed3-c8ae6d2b276e>`_
 for details.
 
 As stated above the ``total_row`` table parameter turns on the "Total" row in
@@ -356,7 +353,7 @@ The supported totals row ``SUBTOTAL`` functions are:
 | var        |
 +------------+
 
-User defined functions or formulas aren't supported.
+User defined functions or formulas can also be added.
 
 It is also possible to set a calculated value for the ``total_function`` using
 the ``total_value`` sub property. This is only necessary when creating

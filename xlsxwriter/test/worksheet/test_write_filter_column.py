@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -25,7 +25,7 @@ class TestWriteFilterColumn(unittest.TestCase):
     def test_write_filter_column(self):
         """Test the _write_filter_column() method"""
 
-        self.worksheet._write_filter_column(0, 1, ['East'])
+        self.worksheet._write_filter_column(0, 1, ["East"])
 
         exp = """<filterColumn colId="0"><filters><filter val="East"/></filters></filterColumn>"""
         got = self.fh.getvalue()

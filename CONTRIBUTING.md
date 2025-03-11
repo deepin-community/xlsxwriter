@@ -11,7 +11,7 @@ Here are some tips on reporting bugs in XlsxWriter.
 The bug you are reporting may already be fixed in the latest version of the
 module. You can check which version of xlsxwriter that you are using as follows:
 
-    python -c 'import xlsxwriter; print(xlsxwriter.__version__)'
+    python -c "import xlsxwriter; print(xlsxwriter.__version__)"
 
 
 The [Changes](https://github.com/jmcnamara/XlsxWriter/blob/master/Changes) file lists what has changed in the latest versions.
@@ -101,15 +101,13 @@ There is a make target that will verify the source and test files using [flake8]
 
 ### Running tests
 
-As a minimum, tests should be run using Python 3.5+.
+As a minimum, tests should be run using Python 3.6+.
 
     make test
     # or
     pytest
 
-I use [pythonbrew](https://github.com/utahta/pythonbrew) and [Tox](https://tox.readthedocs.io/en/latest/) to test with a variety of Python versions. See the Makefile for example test targets. A `tox.ini` file is already configured.
-
-When you push your changes they will also be tested using GitHub actions.
+When you push your changes they will also be tested using GitHub Actions.
 
 
 ### Documentation

@@ -1,5 +1,5 @@
 .. SPDX-License-Identifier: BSD-2-Clause
-   Copyright 2013-2021, John McNamara, jmcnamara@cpan.org
+   Copyright 2013-2023, John McNamara, jmcnamara@cpan.org
 
 .. _format:
 
@@ -504,7 +504,7 @@ The color format should have one of the following values::
     [Black] [Blue] [Cyan] [Green] [Magenta] [Red] [White] [Yellow]
 
 For more information refer to the `Microsoft documentation on cell formats
-<https://support.office.com/en-us/article/create-or-delete-a-custom-number-format-78f2a361-936b-4c03-8772-09fab54be7f4>`_.
+<https://support.microsoft.com/en-us/office/create-a-custom-number-format-78f2a361-936b-4c03-8772-09fab54be7f4?ui=en-us&rs=en-us&ad=us>`_.
 
 For information on how to get a number format to show up as one of the number
 format categories such as Currency, Accounting, Date, Time, Percentage,
@@ -1198,3 +1198,16 @@ format.set_diag_color()
    :param string color: The cell border color.
 
 See :func:`set_border_color` for details on the border colors.
+
+
+format.set_quote_prefix()
+-------------------------
+
+.. py:function:: set_quote_prefix()
+
+   Turn on quote prefix for the format.
+
+Set the quote prefix property of a format to ensure a string is treated as a
+string after editing. This is the same as prefixing the string with a single
+quote in Excel. You don't need to add the quote to the string but you do need
+to add the format.

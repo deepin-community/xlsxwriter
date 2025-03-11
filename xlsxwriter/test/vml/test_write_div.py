@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -25,7 +25,7 @@ class TestWriteDiv(unittest.TestCase):
     def test_write_div(self):
         """Test the _write_div() method"""
 
-        self.vml._write_div('left')
+        self.vml._write_div("left")
 
         exp = """<div style="text-align:left"></div>"""
         got = self.fh.getvalue()

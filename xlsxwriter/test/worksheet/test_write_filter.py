@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -25,7 +25,7 @@ class TestWriteFilter(unittest.TestCase):
     def test_write_filter(self):
         """Test the _write_filter() method"""
 
-        self.worksheet._write_filter('East')
+        self.worksheet._write_filter("East")
 
         exp = """<filter val="East"/>"""
         got = self.fh.getvalue()

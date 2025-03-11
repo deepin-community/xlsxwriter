@@ -1,5 +1,5 @@
 .. SPDX-License-Identifier: BSD-2-Clause
-   Copyright 2013-2021, John McNamara, jmcnamara@cpan.org
+   Copyright 2013-2023, John McNamara, jmcnamara@cpan.org
 
 .. _workbook:
 
@@ -251,7 +251,7 @@ The worksheet name must be a valid Excel worksheet name:
 
 The rules for worksheet names in Excel are explained in the Microsoft Office
 documentation on how to `Rename a worksheet
-<https://support.office.com/en-ie/article/rename-a-worksheet-3f1f7148-ee83-404d-8ef0-9ff99fbad1f9>`_.
+<https://support.microsoft.com/en-us/office/rename-a-worksheet-3f1f7148-ee83-404d-8ef0-9ff99fbad1f9>`_.
 
 
 workbook.add_format()
@@ -295,6 +295,7 @@ The properties that can be set are::
 
     type    (required)
     subtype (optional)
+    name    (optional)
 
 * ``type``
 
@@ -321,8 +322,16 @@ The properties that can be set are::
 
     workbook.add_chart({'type': 'bar', 'subtype': 'stacked'})
 
-See the :ref:`chart_class` for a list of available chart subtypes.
+  See the :ref:`chart_class` for a list of available chart subtypes.
 
+* ``name``
+
+  Set the name for the chart sheet::
+
+    chart = workbook.add_chart({'type': 'column', 'name': 'MyChart'})
+
+  The name property is optional and if it isn't supplied it will default to
+  ``Chart1``, ``Chart2``, etc. The name must be a valid Excel chart name.
 
 .. Note::
 
@@ -488,7 +497,7 @@ The properties that can be set are:
 * ``comments``
 * ``status``
 * ``hyperlink_base``
-* ``create`` - the file creation date as a :class:`datetime.date` object.
+* ``created`` - the file creation date as a :class:`datetime.date` object.
 
 The properties are all optional and should be passed in dictionary format as
 follows::
@@ -600,7 +609,7 @@ Excel convention and enclose it in single quotes::
 
 The rules for names in Excel are explained in the Microsoft Office
 documentation on how to `Define and use names in formulas
-<http://office.microsoft.com/en-001/excel-help/define-and-use-names-in-formulas-HA010147120.aspx>`_.
+<https://support.microsoft.com/en-us/office/define-and-use-names-in-formulas-4d0f13ac-53b7-422e-afd2-abd7ff379c64>`_.
 
 See also :ref:`ex_defined_name`.
 
@@ -621,11 +630,46 @@ existing Excel xlsm file::
 
     workbook.add_vba_project('./vbaProject.bin')
 
-Only one ``vbaProject.bin`` file can be added per workbook.
+Only one ``vbaProject.bin`` file can be added per workbook. The name doesn't
+have to be ``vbaProject.bin``. Any suitable path/name for an existing VBA bin
+file will do.
 
 The ``is_stream`` parameter is used to indicate that ``vba_project`` refers to
 a BytesIO byte stream rather than a physical file. This can be used when
 working with the workbook ``in_memory`` mode.
+
+See :ref:`macros` for more details.
+
+
+workbook.add_signed_vba_project()
+---------------------------------
+
+.. py:function:: add_signed_vba_project(vba_project,
+                                        signature [,
+                                        project_is_stream, [
+                                        signature_is_stream ]]):
+
+   Add a vbaProject binary and a vbaProjectSignature binary to the Excel workbook.
+
+   :param      vba_project:         The vbaProject binary file name.
+   :param      signature:           The vbaProjectSignature binary file name.
+   :param bool project_is_stream:   The vba_project is an in memory byte stream.
+   :param bool signature_is_stream: The signature is an in memory byte stream.
+
+The ``add_signed_vba_project()`` method can be used to add digitally
+signed macros or functions to a workbook. The method adds a binary VBA project
+file and a binary VBA project signature file that have been extracted from an
+existing Excel xlsm file with digitally signed macros:
+
+    workbook.add_signed_vba_project('./vbaProject.bin', './vbaProjectSignature.bin')
+
+Only one ``vbaProject.bin`` file can be added per workbook. The name doesn't
+have to be ``vbaProject.bin``. Any suitable path/name for an existing VBA bin
+file will do. The same applies for ``vbaProjectSignature.bin``.
+
+The ``project_is_stream`` (``signature_is_stream``, resp.) parameter is used to indicate
+that ``vba_project`` (``signature``, resp.) refers to a BytesIO byte stream rather than
+a physical file. This can be used when working with the workbook ``in_memory`` mode.
 
 See :ref:`macros` for more details.
 
@@ -675,7 +719,7 @@ workbook.get_worksheet_by_name()
    :rtype: A :ref:`worksheet <Worksheet>` object.
 
 The ``get_worksheet_by_name()`` method returns the worksheet or chartsheet
-object with the the given ``name`` or ``None`` if it isn't found::
+object with the given ``name`` or ``None`` if it isn't found::
 
     worksheet = workbook.get_worksheet_by_name('Sheet1')
 

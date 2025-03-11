@@ -2,8 +2,13 @@ Source: xlsxwriter
 Maintainer: Debian Python Team <team+python@tracker.debian.org>
 Section: python
 Priority: optional
-Standards-Version: 4.6.0
-Build-Depends: debhelper-compat (= 13), dh-python, python3, python3-pytest
+Standards-Version: 4.6.2
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-sequence-python3,
+ python3-all,
+ python3-setuptools,
+ python3-pytest,
 Vcs-Git: https://salsa.debian.org/python-team/packages/xlsxwriter.git
 Vcs-Browser: https://salsa.debian.org/python-team/packages/xlsxwriter
 Homepage: https://xlsxwriter.readthedocs.org/

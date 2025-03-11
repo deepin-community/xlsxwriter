@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,12 +17,13 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
+        self.set_filename("types06.xlsx")
 
-        self.set_filename('types06.xlsx')
-
-        self.ignore_files = ['xl/calcChain.xml',
-                             '[Content_Types].xml',
-                             'xl/_rels/workbook.xml.rels']
+        self.ignore_files = [
+            "xl/calcChain.xml",
+            "[Content_Types].xml",
+            "xl/_rels/workbook.xml.rels",
+        ]
 
     def test_write_formula_default(self):
         """Test writing formulas with strings_to_formulas on."""
@@ -30,7 +31,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
         workbook = Workbook(self.got_filename)
         worksheet = workbook.add_worksheet()
 
-        worksheet.write(0, 0, '="0"&".0"', None, '0.0')
+        worksheet.write(0, 0, '="0"&".0"', None, "0.0")
 
         workbook.close()
 

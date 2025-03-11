@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -36,7 +36,7 @@ class TestWriteRow(unittest.TestCase):
     def test_write_row_2(self):
         """Test the _write_row() method"""
 
-        self.worksheet._write_row(2, '2:2')
+        self.worksheet._write_row(2, "2:2")
 
         exp = """<row r="3" spans="2:2">"""
         got = self.fh.getvalue()
@@ -66,7 +66,7 @@ class TestWriteRow(unittest.TestCase):
     def test_write_row_5(self):
         """Test the _write_row() method"""
 
-        cell_format = Format({'xf_index': 1})
+        cell_format = Format({"xf_index": 1})
 
         self.worksheet._write_row(6, None, [15, cell_format, 0, 0, 0])
 

@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -25,7 +25,7 @@ class TestWriteDefaultFill(unittest.TestCase):
     def test_write_default_fill(self):
         """Test the _write_default_fill() method"""
 
-        self.styles._write_default_fill('none')
+        self.styles._write_default_fill("none")
 
         exp = """<fill><patternFill patternType="none"/></fill>"""
         got = self.fh.getvalue()

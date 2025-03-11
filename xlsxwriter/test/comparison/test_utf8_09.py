@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 from ..excel_comparison_test import ExcelComparisonTest
 from ...workbook import Workbook
@@ -16,8 +16,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('utf8_09.xlsx')
+        self.set_filename("utf8_09.xlsx")
 
     def test_create_file(self):
         """Test the creation of an XlsxWriter file with utf-8 strings."""
@@ -25,9 +24,9 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
         workbook = Workbook(self.got_filename)
 
         worksheet = workbook.add_worksheet()
-        num_format = workbook.add_format({'num_format': '[$¥-411]#,##0.00'})
+        num_format = workbook.add_format({"num_format": "[$¥-411]#,##0.00"})
 
-        worksheet.write('A1', 1, num_format)
+        worksheet.write("A1", 1, num_format)
 
         workbook.close()
 

@@ -1,3 +1,27 @@
+xlsxwriter (3.1.9-2) unstable; urgency=medium
+
+  * Team upload.
+  * Use dh-sequence-python3
+  * Add dep. on python3-setuptools (Closes: #1080836)
+
+ -- Alexandre Detiste <tchet@debian.org>  Sat, 08 Feb 2025 00:56:17 +0100
+
+xlsxwriter (3.1.9-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Debian Janitor ]
+  * Update lintian override info format in
+    d/python3-xlsxwriter.lintian-overrides on line 2.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository-Browse.
+  * Update standards version to 4.6.2, no changes needed.
+
+  [ Scott Talbert ]
+  * BD on python3-all
+  * Update to new upstream release 3.1.9 (Closes: #1053984, #1056542)
+
+ -- Scott Talbert <swt@techie.net>  Wed, 27 Dec 2023 13:33:19 -0500
+
 xlsxwriter (3.0.2-2) unstable; urgency=medium
 
   * Team upload.

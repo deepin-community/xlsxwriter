@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -25,7 +25,7 @@ class TestWriteNumFmt(unittest.TestCase):
     def test_write_num_fmt(self):
         """Test the _write_num_fmt() method"""
 
-        self.styles._write_num_fmt(164, '#,##0.0')
+        self.styles._write_num_fmt(164, "#,##0.0")
 
         exp = """<numFmt numFmtId="164" formatCode="#,##0.0"/>"""
         got = self.fh.getvalue()

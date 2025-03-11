@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,10 +17,9 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
+        self.set_filename("textbox30.xlsx")
 
-        self.set_filename('textbox30.xlsx')
-
-        self.ignore_elements = {'xl/drawings/drawing1.xml': ['<a:pPr/>']}
+        self.ignore_elements = {"xl/drawings/drawing1.xml": ["<a:pPr/>"]}
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file with textbox(s)."""
@@ -29,8 +28,8 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
 
         worksheet = workbook.add_worksheet()
 
-        worksheet.write('A1', 'This is some text')
-        worksheet.insert_textbox('E9', 'This is some text', {'textlink': '=$A$1'})
+        worksheet.write("A1", "This is some text")
+        worksheet.insert_textbox("E9", "This is some text", {"textlink": "=$A$1"})
 
         workbook.close()
 

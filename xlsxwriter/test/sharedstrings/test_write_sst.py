@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 import unittest
@@ -29,13 +29,13 @@ class TestWriteSst(unittest.TestCase):
         string_table = SharedStringTable()
 
         # Add some strings and check the returned indices.
-        string_table._get_shared_string_index('neptune')
-        string_table._get_shared_string_index('neptune')
-        string_table._get_shared_string_index('neptune')
-        string_table._get_shared_string_index('mars')
-        string_table._get_shared_string_index('venus')
-        string_table._get_shared_string_index('mars')
-        string_table._get_shared_string_index('venus')
+        string_table._get_shared_string_index("neptune")
+        string_table._get_shared_string_index("neptune")
+        string_table._get_shared_string_index("neptune")
+        string_table._get_shared_string_index("mars")
+        string_table._get_shared_string_index("venus")
+        string_table._get_shared_string_index("mars")
+        string_table._get_shared_string_index("venus")
         self.sharedstrings.string_table = string_table
 
         self.sharedstrings._write_sst()

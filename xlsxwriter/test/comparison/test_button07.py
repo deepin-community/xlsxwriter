@@ -3,7 +3,7 @@
 # Tests for XlsxWriter.
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c), 2013-2021, John McNamara, jmcnamara@cpan.org
+# Copyright (c), 2013-2023, John McNamara, jmcnamara@cpan.org
 #
 
 from ..excel_comparison_test import ExcelComparisonTest
@@ -17,8 +17,7 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
     """
 
     def setUp(self):
-
-        self.set_filename('button07.xlsm')
+        self.set_filename("button07.xlsm")
 
     def test_create_file(self):
         """Test the creation of a simple XlsxWriter file."""
@@ -30,10 +29,9 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
         workbook.set_vba_name()
         worksheet.set_vba_name()
 
-        worksheet.insert_button('C2', {'macro': 'say_hello',
-                                       'caption': 'Hello'})
+        worksheet.insert_button("C2", {"macro": "say_hello", "caption": "Hello"})
 
-        workbook.add_vba_project(self.vba_dir + 'vbaProject02.bin')
+        workbook.add_vba_project(self.vba_dir + "vbaProject02.bin")
 
         workbook.close()
 
@@ -46,13 +44,12 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
 
         worksheet = workbook.add_worksheet()
 
-        workbook.set_vba_name('ThisWorkbook')
-        worksheet.set_vba_name('Sheet1')
+        workbook.set_vba_name("ThisWorkbook")
+        worksheet.set_vba_name("Sheet1")
 
-        worksheet.insert_button('C2', {'macro': 'say_hello',
-                                       'caption': 'Hello'})
+        worksheet.insert_button("C2", {"macro": "say_hello", "caption": "Hello"})
 
-        workbook.add_vba_project(self.vba_dir + 'vbaProject02.bin')
+        workbook.add_vba_project(self.vba_dir + "vbaProject02.bin")
 
         workbook.close()
 
@@ -65,10 +62,9 @@ class TestCompareXLSXFiles(ExcelComparisonTest):
 
         worksheet = workbook.add_worksheet()
 
-        worksheet.insert_button('C2', {'macro': 'say_hello',
-                                       'caption': 'Hello'})
+        worksheet.insert_button("C2", {"macro": "say_hello", "caption": "Hello"})
 
-        workbook.add_vba_project(self.vba_dir + 'vbaProject02.bin')
+        workbook.add_vba_project(self.vba_dir + "vbaProject02.bin")
 
         workbook.close()
 

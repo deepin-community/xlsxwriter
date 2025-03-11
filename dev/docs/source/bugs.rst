@@ -1,5 +1,5 @@
 .. SPDX-License-Identifier: BSD-2-Clause
-   Copyright 2013-2021, John McNamara, jmcnamara@cpan.org
+   Copyright 2013-2023, John McNamara, jmcnamara@cpan.org
 
 .. _bugs:
 
@@ -111,7 +111,7 @@ The bug you are reporting may already be fixed in the latest version of the
 module. You can check which version of XlsxWriter that you are using as
 follows::
 
-    python -c 'import xlsxwriter; print(xlsxwriter.__version__)'
+    python -c "import xlsxwriter; print(xlsxwriter.__version__)"
 
 Check the :ref:`changes` section to see what has changed in the latest versions.
 
@@ -166,7 +166,3 @@ the bug report more quickly.
        worksheet.write('A1', 'Hello world')
 
        workbook.close()
-
-See also how `How to create a Minimal, Complete, and Verifiable example
-<https://stackoverflow.com/help/minimal-reproducible-example>`_ from
-StackOverflow.
